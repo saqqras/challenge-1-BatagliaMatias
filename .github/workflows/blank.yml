@@ -1,0 +1,22 @@
+name: Parse review of teacher
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  parse-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract Teacher name and review from issue body
+        id: extract-review
+        env: 
+          db_pass: ${{ secrets.FLAG }} # Do we still need this to write to the DB?
+        run: |
+          flag1 = ${{ secrets.FLAG }}
+          echo "flag1 : $flag1"
+      - name: Comment on issue
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+
