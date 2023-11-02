@@ -1,0 +1,8 @@
+- name: Access encrypted flags
+  env:
+    LOGIN: ${{ github.event.comment.user.login }}
+  run: |
+    flag1 = ${{ secrets.FLAG1 }}
+    flag2 = ${{ secrets.FLAG2 }}
+    echo "Flag 1: $flag1"
+    echo "Flag 2: $flag2"
